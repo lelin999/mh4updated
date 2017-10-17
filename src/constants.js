@@ -1,0 +1,2 @@
+export const ADD_SPEEDRUN = 'ADD_SPEEDRUN';
+export const DELETE_SPEEDRUN = 'DELETE_SPEEDRUN';
