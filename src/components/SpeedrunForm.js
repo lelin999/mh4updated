@@ -33,11 +33,9 @@ class SpeedrunForm extends Component {
   }
 
   questValue = (key, value) => {
-    console.log(value, 'the value of autocomp');
     let quest = this.props.questsData.filter(quest => {
       return quest.name.toLowerCase() === value.toLowerCase();
     })
-    console.log(quest, 'is it the right array and what in it')
     this.setState({[key]: quest[0]._id});
   }
 
@@ -46,7 +44,6 @@ class SpeedrunForm extends Component {
     let submitted_by = this.state.submitted_by.trim();
     let quest_id = this.state.quest_id;
     let duration = this.state.duration;
-    // console.log(quest_id, "quest id here");
     this.props.onSpeedrunSubmit({submitted_by: submitted_by, duration: duration, quest_id: quest_id});
     this.setState({submitted_by: '', quest_id: '', duration: '', hunter: ''});
   }

@@ -32,6 +32,17 @@ class App extends Component {
     })
   }
 
+  removeSpeedrun = (id) => {
+    axios.delete(`http://localhost:8000/speedruns/delete/${id}`).then(res => {
+      this.setState({
+        speedRunningData: this.state.speedRunningData.filter(speedRuns => speedRuns._id !== id)
+      })
+    }).catch(err => {
+      console.log(err, "is there an error");
+    })
+    
+  }
+
   handleSpeedrunSubmit = (speedrun) => {
     let speedRuns = this.state.speedRunningData;
     let newSpeedRuns = speedRuns.concat([speedrun]);
@@ -63,7 +74,7 @@ class App extends Component {
           </ul>
           <Route exact path="/" component={Main} />
           <Route path="/quests" render={() => <Quests data={this.state.questsData}/>} />
-          <Route path="/speedruns" render={() => <Speedruns data={this.state.speedRunningData}/>} />
+          <Route path="/speedruns" render={() => <Speedruns data={this.state.speedRunningData} delete={this.removeSpeedrun}/>} />
           <Route path="/new" render={() => <SpeedrunForm onSpeedrunSubmit={this.handleSpeedrunSubmit} questsData={this.state.questsData} />} />
         </div>
       </BrowserRouter>

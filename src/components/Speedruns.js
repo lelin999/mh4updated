@@ -5,9 +5,19 @@ class Speedruns extends Component {
     let allSpeedruns = this.props.data.map(speedrun => {
       return(
         <div>
-          Quest: { speedrun.quest_id }
-          Name: { speedrun.submitted_by }
-          Time Spent: { speedrun.duration }
+          <div className="SoloQuest">
+            ID: { speedrun._id }
+            Quest: { speedrun.quest_id }
+            Name: { speedrun.submitted_by }
+            Time Spent: { speedrun.duration }
+          </div>
+          <div className="RemoveButton">
+            <button type="button"
+              onClick={() => this.props.delete(speedrun._id)}
+            >
+              Remove this Quest
+            </button>
+          </div>
         </div>
       )
     });
